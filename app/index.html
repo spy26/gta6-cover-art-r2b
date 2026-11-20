@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — GTA 6-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="stage" id="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="hint">Drag the cover to pan the selected panel &middot; scroll to zoom</p>
+  </section>
+
+  <section class="controls" aria-label="Cover controls">
+    <h1>Vice Cover Studio</h1>
+    <p class="tag">Your photo &rarr; a Vice City poster. Offline, nothing uploads.</p>
+
+    <h2>Photos</h2>
+    <div class="uploads">
+      <label>Photo 1 <input class="upload" data-slot="0" type="file" accept="image/*"></label>
+      <label>Photo 2 <input class="upload" data-slot="1" type="file" accept="image/*"></label>
+      <label>Photo 3 <input class="upload" data-slot="2" type="file" accept="image/*"></label>
+    </div>
+    <p class="note">Samples: Boulevard &amp; Pier. Uploads stay on your machine.</p>
+
+    <h2>Layout</h2>
+    <div class="row" id="layouts"></div>
+
+    <h2>Style preset</h2>
+    <div class="row" id="presets"></div>
+
+    <h2>Panels</h2>
+    <div class="panel-picks">
+      <button type="button" data-panel="0">Panel 1</button>
+      <button type="button" data-panel="1">Panel 2</button>
+      <button type="button" data-panel="2">Panel 3</button>
+    </div>
+    <div class="photo-picks">
+      <label>Panel 1 photo <select class="photo-select" data-slot="0"></select></label>
+      <label>Panel 2 photo <select class="photo-select" data-slot="1"></select></label>
+      <label>Panel 3 photo <select class="photo-select" data-slot="2"></select></label>
+    </div>
+    <div id="panel-controls">
+      <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.01" value="1"> <span id="zoom-val">1.00&times;</span></label>
+      <label>Pan X <input id="panx" type="range" min="-1" max="1" step="0.01" value="0"></label>
+      <label>Pan Y <input id="pany" type="range" min="-1" max="1" step="0.01" value="0"></label>
+      <label class="check"><input id="flip" type="checkbox"> Flip panel</label>
+    </div>
+
+    <h2>Caption</h2>
+    <label>Title <input id="title" type="text" maxlength="24" value="SUNSET HEIST"></label>
+    <label>Tagline pill <input id="pill" type="text" maxlength="30" value="ONE LAST SCORE"></label>
+    <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="VICE CITY &bull; EST. 2026"></label>
+    <label>Footer <input id="footer" type="text" maxlength="20" value="LEONIDA"></label>
+    <label>Title size <input id="title-scale" type="range" min="0.7" max="1.3" step="0.01" value="1"> <span id="title-scale-val">100%</span></label>
+
+    <h2>Effects</h2>
+    <div class="fx">
+      <label class="check"><input type="checkbox" data-fx="grade" checked> Sunset grade</label>
+      <label class="check"><input type="checkbox" data-fx="sun" checked> Retro sun &middot; VI</label>
+      <label class="check"><input type="checkbox" data-fx="skyline" checked> Skyline</label>
+      <label class="check"><input type="checkbox" data-fx="palms" checked> Palms</label>
+      <label class="check"><input type="checkbox" data-fx="halftone" checked> Halftone</label>
+      <label class="check"><input type="checkbox" data-fx="grain" checked> Grain</label>
+      <label class="check"><input type="checkbox" data-fx="vignette" checked> Vignette</label>
+    </div>
+
+    <div class="actions">
+      <button id="randomize" type="button">Randomize</button>
+      <button id="compare" type="button">Hold to compare</button>
+    </div>
+
+    <h2>Export</h2>
+    <label>Size <select id="size"></select></label>
+    <button id="export" type="button" class="primary">Export PNG</button>
+    <p id="status" role="status"></p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* Vice Cover Studio — editor chrome. Dark neon shell, the cover does the talking. */
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: #0d0618; color: #f2e9ff;
+  font: 15px/1.45 Arial, Helvetica, sans-serif;
+}
+.app { display: flex; gap: 24px; padding: 20px; align-items: flex-start; flex-wrap: wrap; }
+.stage { flex: 1 1 560px; min-width: 320px; }
+#cover {
+  display: block; background: #1c0533; border: 3px solid #ff2ea6;
+  border-radius: 6px; max-width: 100%; height: auto; cursor: grab;
+  box-shadow: 0 0 32px rgba(255, 46, 166, .35);
+}
+#cover:active { cursor: grabbing; }
+.hint { color: #b9a3d6; font-size: 13px; margin: 8px 2px; }
+.controls { flex: 0 1 360px; background: #1a0b2e; border: 1px solid #3a1a5e; border-radius: 10px; padding: 18px; }
+h1 { margin: 0 0 4px; font-size: 26px; color: #fff; text-shadow: 0 0 14px #ff2ea6; letter-spacing: .5px; }
+.tag { margin: 0 0 12px; color: #c9b3e8; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #ffb52e; margin: 18px 0 8px; border-top: 1px solid #3a1a5e; padding-top: 14px; }
+h2:first-of-type { border-top: 0; padding-top: 0; }
+label { display: block; margin: 8px 0; font-size: 14px; }
+input[type="text"], select {
+  width: 100%; margin-top: 4px; padding: 8px 10px; border-radius: 6px;
+  border: 1px solid #5b2d8a; background: #12081f; color: #fff; font-size: 15px;
+}
+input[type="range"] { width: 100%; accent-color: #ff2ea6; }
+input[type="file"] { width: 100%; margin-top: 4px; font-size: 13px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.row button, .panel-picks button {
+  padding: 8px 12px; border-radius: 20px; border: 1px solid #5b2d8a;
+  background: #241040; color: #efe6ff; cursor: pointer; font-size: 14px;
+}
+.row button.active, .panel-picks button.active {
+  background: #ff2ea6; border-color: #ff2ea6; color: #fff; font-weight: 700;
+}
+.row button:hover, .panel-picks button:hover { border-color: #ff2ea6; }
+.panel-picks { display: flex; gap: 8px; margin-bottom: 6px; }
+.photo-picks label { font-size: 13px; }
+.fx { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
+.check { display: flex; align-items: center; gap: 8px; margin: 6px 0; cursor: pointer; }
+.check input { accent-color: #ff2ea6; width: 16px; height: 16px; }
+.actions { display: flex; gap: 10px; margin-top: 14px; }
+.actions button, .primary {
+  flex: 1; padding: 11px; border-radius: 8px; border: 1px solid #ff2ea6;
+  background: #2a0a4a; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+.primary { width: 100%; background: #ff2ea6; margin-top: 6px; }
+#compare.holding { background: #ffb52e; border-color: #ffb52e; color: #1c0533; }
+#status { color: #7df3ff; min-height: 1.2em; margin: 10px 0 0; }
+.note { color: #b9a3d6; font-size: 13px; margin: 4px 0 0; }
+
+/* Shot modes: cover fills the viewport exactly; editor shot keeps the UI. */
+body.shot-cover { background: #000; }
+body.shot-cover .app { display: block; padding: 0; }
+body.shot-cover .controls, body.shot-cover .hint { display: none; }
+body.shot-cover .stage { min-width: 0; }
+body.shot-cover #cover { border: 0; border-radius: 0; box-shadow: none; width: 100vw; height: 100vh; object-fit: fill; }
+body.shot-editor .app { flex-wrap: nowrap; }
